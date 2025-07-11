@@ -90,24 +90,18 @@ def story():
     <head>
         <title>破碎的我</title>
         {style}
-        <script>
-            function showImages() {{
-                document.getElementById('img1').style.display = 'block';
-                document.getElementById('img2').style.display = 'block';
-                document.getElementById('show-img-btn').style.display = 'none';
-            }}
-        </script>
     </head>
     <body>
         <div class="container">
             <h1>破碎的我</h1>
             <p>我的父親不是世界首富，母親也不是台灣富豪，但我從未放棄。</p>
             <p>請給我一點幫助。</p>
-            <button id="show-img-btn" onclick="showImages()">點我看圖片</button>
+            
             <div class="image-row">
-                <img id="img1" src="/static/6908.jpg" alt="圖片1">
-                <img id="img2" src="/static/4502.jpg" alt="圖片2">
+                <img src="/static/6908.jpg" alt="圖片1">
+                <img src="/static/4502.jpg" alt="圖片2">
             </div>
+            
             <br>
             <a href="/donate"><button>我要捐款</button></a>
         </div>

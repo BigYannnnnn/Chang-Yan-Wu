@@ -3,6 +3,7 @@ import os
 
 app = Flask(__name__)
 
+# 統一樣式
 style = """
 <style>
     body {
@@ -16,15 +17,15 @@ style = """
     }
     .container {
         text-align: center;
-        max-width: 600px;
-        padding: 20px;
+        max-width: 700px;
+        padding: 30px;
     }
     h1 {
         font-size: 48px;
         margin-bottom: 20px;
     }
     p {
-        font-size: 20px;
+        font-size: 22px;
         line-height: 1.6;
     }
     img {
@@ -33,13 +34,13 @@ style = """
         margin-top: 20px;
     }
     button {
-        font-size: 18px;
-        padding: 10px 20px;
+        font-size: 20px;
+        padding: 12px 24px;
         margin-top: 25px;
         background-color: #f27979;
         color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 8px;
         cursor: pointer;
     }
     button:hover {
@@ -48,13 +49,13 @@ style = """
 </style>
 """
 
+# 首頁
 @app.route('/')
 def index():
     return render_template_string(f"""
     <html>
     <head>
         <meta charset="UTF-8">
-        <meta name="description" content="吳昌彥的真實故事與募款網站">
         <title>吳昌彥的故事</title>
         {style}
     </head>
@@ -68,6 +69,7 @@ def index():
     </html>
     """)
 
+# 故事頁（圖片按按鈕才顯示）
 @app.route('/story')
 def story():
     return render_template_string(f"""
@@ -75,19 +77,28 @@ def story():
     <head>
         <title>破碎的我</title>
         {style}
+        <script>
+            function showImage() {{
+                document.getElementById('story-img').style.display = 'block';
+                document.getElementById('show-img-btn').style.display = 'none';
+            }}
+        </script>
     </head>
     <body>
         <div class="container">
             <h1>破碎的我</h1>
             <p>我的父親好賭，母親重病，我從未放棄。</p>
             <p>我需要一點幫助。</p>
-          
+            <button id="show-img-btn" onclick="showImage()">點我看圖片</button><br>
+            <img id="story-img" src="/static/4502.jpg" alt="故事圖片" style="display: none;">
+            <br><br>
             <a href="/donate"><button>我要捐款</button></a>
         </div>
     </body>
     </html>
     """)
 
+# 捐款頁
 @app.route('/donate')
 def donate():
     return render_template_string(f"""
@@ -108,6 +119,7 @@ def donate():
     </html>
     """)
 
+# 啟動
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)

@@ -80,8 +80,8 @@ def story():
         <div class="container">
             <h1>破碎的我</h1>
             <p>我的父親好賭，母親重病，我從未放棄。</p>
-            <img src="/static/4502.jpg" alt="故事圖片">
             <p>我需要一點幫助。</p>
+            <img src="/static/4502.jpg" alt="故事圖片">
             <a href="/donate"><button>我要捐款</button></a>
         </div>
     </body>

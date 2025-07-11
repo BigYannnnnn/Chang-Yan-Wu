@@ -3,6 +3,7 @@ import os
 
 app = Flask(__name__)
 
+# CSS 樣式（含背景圖片）
 style = """
 <style>
     body {
@@ -12,31 +13,37 @@ style = """
         margin: 0;
         padding: 0;
         font-family: "微軟正黑體", sans-serif;
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
     }
     .container {
-        background-color: rgba(255, 255, 255, 0.88);
+        background-color: rgba(255, 255, 255, 0.9);
         padding: 30px;
         border-radius: 12px;
-        max-width: 700px;
+        max-width: 800px;
         text-align: center;
-        overflow-y: auto;
-        max-height: 90vh;
+        box-shadow: 0 0 20px rgba(0,0,0,0.2);
     }
     h1 {
-        font-size: 42px;
+        font-size: 48px;
         margin-bottom: 20px;
     }
     p {
-        font-size: 20px;
+        font-size: 22px;
         line-height: 1.6;
     }
+    img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        margin: 15px;
+        border-radius: 8px;
+    }
     button {
-        font-size: 18px;
-        padding: 10px 20px;
+        font-size: 20px;
+        padding: 12px 24px;
         margin-top: 25px;
         background-color: #f27979;
         color: white;
@@ -46,20 +53,6 @@ style = """
     }
     button:hover {
         background-color: #d95d5d;
-    }
-    .image-row {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-        margin-top: 20px;
-    }
-    .image-row img {
-        width: 45%;
-        max-height: 300px;
-        object-fit: cover;
-        border-radius: 10px;
-        display: none;
     }
 </style>
 """
@@ -95,14 +88,11 @@ def story():
         <div class="container">
             <h1>破碎的我</h1>
             <p>我的父親不是世界首富，母親也不是台灣富豪，但我從未放棄。</p>
-            <p>請給我一點幫助。</p>
-            
-            <div class="image-row">
+            <p>我需要一點幫助。</p>
+            <div>
                 <img src="/static/6908.jpg" alt="圖片1">
                 <img src="/static/4502.jpg" alt="圖片2">
             </div>
-            
-            <br>
             <a href="/donate"><button>我要捐款</button></a>
         </div>
     </body>

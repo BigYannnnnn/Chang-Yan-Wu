@@ -3,22 +3,28 @@ import os
 
 app = Flask(__name__)
 
-# 統一樣式
+# CSS：包含背景圖設定（用 static/2507.jpg）
 style = """
 <style>
     body {
+        background-image: url('/static/2507.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0;
+        font-family: "微軟正黑體", sans-serif;
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        margin: 0;
-        font-family: "微軟正黑體", sans-serif;
-        background-color: #fff8f0;
     }
     .container {
-        text-align: center;
-        max-width: 700px;
+        background-color: rgba(255, 255, 255, 0.88);
+        border-radius: 16px;
         padding: 30px;
+        max-width: 700px;
+        text-align: center;
+        box-shadow: 0 0 20px rgba(0,0,0,0.3);
     }
     h1 {
         font-size: 48px;
@@ -69,43 +75,17 @@ def index():
     </html>
     """)
 
-# 故事頁
+# 故事頁（圖片按鈕後顯示）
 @app.route('/story')
 def story():
     return render_template_string(f"""
     <html>
     <head>
-        <meta charset="UTF-8">
         <title>破碎的我</title>
         {style}
-        <style>
-            .image-wrapper {{
-                position: relative;
-                display: none;
-                margin-top: 30px;
-            }}
-            .image-wrapper::before {{
-                content: "";
-                background-image: url('/static/2507.jpg');  /* 背景圖 */
-                background-size: cover;
-                background-position: center;
-                opacity: 0.3;  /* 背景透明度 */
-                position: absolute;
-                top: 0; left: 0;
-                width: 100%; height: 100%;
-                z-index: 0;
-                border-radius: 12px;
-            }}
-            .image-wrapper img {{
-                position: relative;
-                z-index: 1;
-                width: 100%;
-                border-radius: 12px;
-            }}
-        </style>
         <script>
             function showImage() {{
-                document.getElementById('image-wrapper').style.display = 'block';
+                document.getElementById('story-img').style.display = 'block';
                 document.getElementById('show-img-btn').style.display = 'none';
             }}
         </script>
@@ -116,9 +96,7 @@ def story():
             <p>我的父親好賭，母親重病，我從未放棄。</p>
             <p>我需要一點幫助。</p>
             <button id="show-img-btn" onclick="showImage()">點我看圖片</button><br>
-            <div id="image-wrapper" class="image-wrapper">
-                <img src="/static/4502.jpg" alt="故事圖片">
-            </div>
+            <img id="story-img" src="/static/4502.jpg" alt="故事圖片" style="display: none;">
             <br><br>
             <a href="/donate"><button>我要捐款</button></a>
         </div>
@@ -132,7 +110,6 @@ def donate():
     return render_template_string(f"""
     <html>
     <head>
-        <meta charset="UTF-8">
         <title>我要捐款</title>
         {style}
     </head>
@@ -148,7 +125,5 @@ def donate():
     </html>
     """)
 
-# 啟動
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+# 生產環境：交由 gunicorn 執行
+app_instance = app

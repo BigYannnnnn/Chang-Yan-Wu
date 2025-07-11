@@ -135,6 +135,10 @@ def sitemap():
   <url><loc>https://chang-yan-wu.onrender.com/donate</loc></url>
 </urlset>
 """, 200, {'Content-Type': 'application/xml'}
+
+@app.route('/robots.txt')
+def robots():
+    return "User-agent: *\nAllow: /\nSitemap: https://chang-yan-wu.onrender.com/sitemap.xml", 200, {'Content-Type': 'text/plain'}
 # 啟動伺服器
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))

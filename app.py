@@ -6,25 +6,25 @@ app = Flask(__name__)
 # CSS：包含背景圖設定（用 static/2507.jpg）
 style = """
 <style>
-    body {
-        background-image: url('/static/2507.jpg');
+   body {
+        background-image: url('/static/2507.jpg');  /* <-- 加這行 */
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        margin: 0;
-        font-family: "微軟正黑體", sans-serif;
-        height: 100vh;
+
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: "微軟正黑體", sans-serif;
     }
     .container {
-        background-color: rgba(255, 255, 255, 0.88);
-        border-radius: 16px;
-        padding: 30px;
-        max-width: 700px;
         text-align: center;
-        box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        max-width: 700px;
+        padding: 30px;
+        background-color: rgba(255, 255, 255, 0.85); /* 讓內容區塊稍微透明好閱讀 */
+        border-radius: 10px;
     }
     h1 {
         font-size: 48px;

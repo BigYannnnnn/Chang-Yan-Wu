@@ -93,7 +93,7 @@ def story():
             <p>我的父親不是世界首富，母親也不是台灣富豪，但我從未放棄。</p>
              <p>母親也不是台灣富豪，</p>
              <p>但我從未放棄，</p>
-            <p>所以我需要一點幫助。</p>
+            
             <button id="show-img-btn" onclick="showImage()">點我看圖片</button><br>
         
             <img id="story-img" src="/static/6908.jpg" alt="故事圖片" style="display: none;">

@@ -90,7 +90,7 @@ def story():
     <body>
         <div class="container">
             <h1>破碎的我</h1>
-            <p>我的父親好賭，母親重病，我從未放棄。</p>
+            <p>我的父親不是世界首富，母親也不是台餐富豪，但我從未放棄。</p>
             <p>我需要一點幫助。</p>
             <button id="show-img-btn" onclick="showImage()">點我看圖片</button><br>
             <img id="story-img" src="/static/4502.jpg" alt="故事圖片" style="display: none;">

@@ -3,7 +3,6 @@ import os
 
 app = Flask(__name__)
 
-# CSS 樣式，背景圖設定為 static/2507.jpg
 style = """
 <style>
     body {
@@ -19,28 +18,25 @@ style = """
         align-items: center;
     }
     .container {
-        background-color: rgba(255, 255, 255, 0.85);
+        background-color: rgba(255, 255, 255, 0.88);
         padding: 30px;
         border-radius: 12px;
         max-width: 700px;
         text-align: center;
+        overflow-y: auto;
+        max-height: 90vh;
     }
     h1 {
-        font-size: 48px;
+        font-size: 42px;
         margin-bottom: 20px;
     }
     p {
-        font-size: 22px;
+        font-size: 20px;
         line-height: 1.6;
     }
-    img {
-        max-width: 100%;
-        height: auto;
-        margin-top: 20px;
-    }
     button {
-        font-size: 20px;
-        padding: 12px 24px;
+        font-size: 18px;
+        padding: 10px 20px;
         margin-top: 25px;
         background-color: #f27979;
         color: white;
@@ -50,6 +46,20 @@ style = """
     }
     button:hover {
         background-color: #d95d5d;
+    }
+    .image-row {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+    .image-row img {
+        width: 45%;
+        max-height: 300px;
+        object-fit: cover;
+        border-radius: 10px;
+        display: none;
     }
 </style>
 """
@@ -81,7 +91,7 @@ def story():
         <title>破碎的我</title>
         {style}
         <script>
-            function showImage() {{
+            function showImages() {{
                 document.getElementById('img1').style.display = 'block';
                 document.getElementById('img2').style.display = 'block';
                 document.getElementById('show-img-btn').style.display = 'none';
@@ -91,17 +101,14 @@ def story():
     <body>
         <div class="container">
             <h1>破碎的我</h1>
-            <p>我的父親不是世界首富，</p>
-            <p>母親也不是台灣富豪，</p>
-            <p>但我從未放棄，</p>
-
-            <button id="show-img-btn" onclick="showImage()">點我看圖片</button><br>
-
-            <img id="img1" src="/static/6908.jpg" alt="圖片1" style="display: none;">
-            <img id="img2" src="/static/4502.jpg" alt="圖片2" style="display: none;">
-
-            <br><br>
-            <p>所以我需要一點幫助。</p>
+            <p>我的父親不是世界首富，母親也不是台灣富豪，但我從未放棄。</p>
+            <p>請給我一點幫助。</p>
+            <button id="show-img-btn" onclick="showImages()">點我看圖片</button>
+            <div class="image-row">
+                <img id="img1" src="/static/6908.jpg" alt="圖片1">
+                <img id="img2" src="/static/4502.jpg" alt="圖片2">
+            </div>
+            <br>
             <a href="/donate"><button>我要捐款</button></a>
         </div>
     </body>

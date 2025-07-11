@@ -68,6 +68,21 @@ def index():
     </html>
     """)
 
+@app.route('/吳昌彥')
+def changyanwu():
+    return f"""
+    <html>
+        <head><title>吳昌彥</title>{style}</head>
+        <body>
+            <div class="container">
+                <h1>這是吳昌彥</h1>
+                <img src="/static/4502.jpg" alt="吳昌彥照片" width="300">
+                <br><a href="/"><button>回首頁</button></a>
+            </div>
+        </body>
+    </html>
+    """
+
 @app.route('/story')
 def story():
     return render_template_string(f"""

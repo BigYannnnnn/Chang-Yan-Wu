@@ -82,7 +82,8 @@ def story():
         {style}
         <script>
             function showImage() {{
-                document.getElementById('story-img').style.display = 'block';
+                document.getElementById('img1').style.display = 'block';
+                document.getElementById('img2').style.display = 'block';
                 document.getElementById('show-img-btn').style.display = 'none';
             }}
         </script>
@@ -91,14 +92,14 @@ def story():
         <div class="container">
             <h1>破碎的我</h1>
             <p>我的父親不是世界首富，母親也不是台灣富豪，但我從未放棄。</p>
-             <p>母親也不是台灣富豪，</p>
-             <p>但我從未放棄，</p>
-            
+            <p>母親也不是台灣富豪，</p>
+            <p>但我從未放棄，</p>
+
             <button id="show-img-btn" onclick="showImage()">點我看圖片</button><br>
-        
-            <img id="story-img" src="/static/6908.jpg" alt="故事圖片" style="display: none;">
-             <img id="story-img" src="/static/4502.jpg" alt="故事圖片" style="display: none;">
-            
+
+            <img id="img1" src="/static/6908.jpg" alt="圖片1" style="display: none;">
+            <img id="img2" src="/static/4502.jpg" alt="圖片2" style="display: none;">
+
             <br><br>
             <p>所以我需要一點幫助。</p>
             <a href="/donate"><button>我要捐款</button></a>

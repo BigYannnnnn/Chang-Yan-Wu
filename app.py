@@ -63,7 +63,7 @@ def index():
     <html>
     <head>
         <meta charset="UTF-8">
-        <meta name="google-site-verification" content="google1234567890abcdef">
+        <meta name="google-site-verification" content="google255dd87781a8ec94">
         <title>吳昌彥的故事</title>
         {style}
     </head>

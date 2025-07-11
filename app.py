@@ -121,9 +121,10 @@ def donate():
     """)
 
 # Google 驗證用 HTML 檔案（請確認檔案已放在根目錄）
+
 @app.route('/google255dd87781a8ec94.html')
-def google_verify():
-    return send_from_directory('.', 'google255dd87781a8ec94.html')
+def google_verification():
+    return 'google-site-verification: google255dd87781a8ec94.html'
 
 # 啟動伺服器
 if __name__ == '__main__':

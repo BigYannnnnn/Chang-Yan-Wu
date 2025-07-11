@@ -69,17 +69,43 @@ def index():
     </html>
     """)
 
-# 故事頁（圖片按按鈕才顯示）
+# 故事頁
 @app.route('/story')
 def story():
     return render_template_string(f"""
     <html>
     <head>
+        <meta charset="UTF-8">
         <title>破碎的我</title>
         {style}
+        <style>
+            .image-wrapper {{
+                position: relative;
+                display: none;
+                margin-top: 30px;
+            }}
+            .image-wrapper::before {{
+                content: "";
+                background-image: url('/static/2507.jpg');  /* 背景圖 */
+                background-size: cover;
+                background-position: center;
+                opacity: 0.3;  /* 背景透明度 */
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+                z-index: 0;
+                border-radius: 12px;
+            }}
+            .image-wrapper img {{
+                position: relative;
+                z-index: 1;
+                width: 100%;
+                border-radius: 12px;
+            }}
+        </style>
         <script>
             function showImage() {{
-                document.getElementById('story-img').style.display = 'block';
+                document.getElementById('image-wrapper').style.display = 'block';
                 document.getElementById('show-img-btn').style.display = 'none';
             }}
         </script>
@@ -90,7 +116,9 @@ def story():
             <p>我的父親好賭，母親重病，我從未放棄。</p>
             <p>我需要一點幫助。</p>
             <button id="show-img-btn" onclick="showImage()">點我看圖片</button><br>
-            <img id="story-img" src="/static/4502.jpg" alt="故事圖片" style="display: none;">
+            <div id="image-wrapper" class="image-wrapper">
+                <img src="/static/4502.jpg" alt="故事圖片">
+            </div>
             <br><br>
             <a href="/donate"><button>我要捐款</button></a>
         </div>
@@ -104,6 +132,7 @@ def donate():
     return render_template_string(f"""
     <html>
     <head>
+        <meta charset="UTF-8">
         <title>我要捐款</title>
         {style}
     </head>

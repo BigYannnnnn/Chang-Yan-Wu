@@ -1,9 +1,9 @@
-from flask import Flask, render_template_string
+from flask import Flask, render_template_string, send_from_directory
 import os
 
 app = Flask(__name__)
 
-# CSS 樣式（含背景圖片）
+# CSS 樣式（含背景圖）
 style = """
 <style>
     body {
@@ -22,9 +22,8 @@ style = """
         background-color: rgba(255, 255, 255, 0.9);
         padding: 30px;
         border-radius: 12px;
-        max-width: 800px;
+        max-width: 700px;
         text-align: center;
-        box-shadow: 0 0 20px rgba(0,0,0,0.2);
     }
     h1 {
         font-size: 48px;
@@ -35,11 +34,9 @@ style = """
         line-height: 1.6;
     }
     img {
-        width: 100%;
-        max-width: 300px;
+        max-width: 90%;
         height: auto;
-        margin: 15px;
-        border-radius: 8px;
+        margin: 15px 0;
     }
     button {
         font-size: 20px;
@@ -57,13 +54,13 @@ style = """
 </style>
 """
 
+# 首頁
 @app.route('/')
 def index():
     return render_template_string(f"""
     <html>
     <head>
         <meta charset="UTF-8">
-        
         <title>吳昌彥的故事</title>
         {style}
     </head>
@@ -77,6 +74,7 @@ def index():
     </html>
     """)
 
+# 故事頁（直接顯示兩張圖片）
 @app.route('/story')
 def story():
     return render_template_string(f"""
@@ -89,17 +87,16 @@ def story():
         <div class="container">
             <h1>破碎的我</h1>
             <p>我的父親不是世界首富，母親也不是台灣富豪，但我從未放棄。</p>
-            <p>我需要一點幫助。</p>
-            <div>
-                <img src="/static/6908.jpg" alt="圖片1">
-                <img src="/static/4502.jpg" alt="圖片2">
-            </div>
+            <img src="/static/6908.jpg" alt="故事圖片 1">
+            <img src="/static/4502.jpg" alt="故事圖片 2">
+            <p>所以我需要一點幫助。</p>
             <a href="/donate"><button>我要捐款</button></a>
         </div>
     </body>
     </html>
     """)
 
+# 捐款頁
 @app.route('/donate')
 def donate():
     return render_template_string(f"""
@@ -120,6 +117,12 @@ def donate():
     </html>
     """)
 
+# Google 驗證用 HTML 檔案（請確認檔案已放在根目錄）
+@app.route('/google255dd87781a8ec94.html')
+def google_verify():
+    return send_from_directory('.', 'google255dd87781a8ec94.html')
+
+# 啟動伺服器
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)

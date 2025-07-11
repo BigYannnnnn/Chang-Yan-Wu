@@ -97,6 +97,7 @@ def story():
             <button id="show-img-btn" onclick="showImage()">點我看圖片</button><br>
         
             <img id="story-img" src="/static/6908.jpg" alt="故事圖片" style="display: none;">
+             <img id="story-img" src="/static/4502.jpg" alt="故事圖片" style="display: none;">
             
             <br><br>
             <p>所以我需要一點幫助。</p>

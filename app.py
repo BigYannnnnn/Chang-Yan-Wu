@@ -24,6 +24,7 @@ style = """
         border-radius: 12px;
         max-width: 700px;
         text-align: center;
+        overflow-y: auto;
     }
     h1 {
         font-size: 48px;
@@ -35,8 +36,10 @@ style = """
     }
     img {
         max-width: 90%;
+        max-height: 200px;
         height: auto;
         margin: 15px 0;
+        border-radius: 10px;
     }
     button {
         font-size: 20px;

@@ -90,11 +90,16 @@ def story():
     <body>
         <div class="container">
             <h1>破碎的我</h1>
-            <p>我的父親不是世界首富，母親也不是台餐富豪，但我從未放棄。</p>
-            <p>我需要一點幫助。</p>
+            <p>我的父親不是世界首富，母親也不是台灣富豪，但我從未放棄。</p>
+             <p>母親也不是台灣富豪，</p>
+             <p>但我從未放棄，</p>
+            <p>所以我需要一點幫助。</p>
             <button id="show-img-btn" onclick="showImage()">點我看圖片</button><br>
-            <img id="story-img" src="/static/4502.jpg" alt="故事圖片" style="display: none;">
+        
+            <img id="story-img" src="/static/6908.jpg" alt="故事圖片" style="display: none;">
+            
             <br><br>
+            <p>所以我需要一點幫助。</p>
             <a href="/donate"><button>我要捐款</button></a>
         </div>
     </body>

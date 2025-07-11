@@ -3,28 +3,27 @@ import os
 
 app = Flask(__name__)
 
-# CSS：包含背景圖設定（用 static/2507.jpg）
+# CSS 樣式，背景圖設定為 static/2507.jpg
 style = """
 <style>
-   body {
-        background-image: url('/static/2507.jpg');  /* <-- 加這行 */
+    body {
+        background-image: url('/static/2507.jpg');
         background-size: cover;
         background-position: center;
-        background-repeat: no-repeat;
-
+        margin: 0;
+        padding: 0;
+        font-family: "微軟正黑體", sans-serif;
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        margin: 0;
-        font-family: "微軟正黑體", sans-serif;
     }
     .container {
-        text-align: center;
-        max-width: 700px;
+        background-color: rgba(255, 255, 255, 0.85);
         padding: 30px;
-        background-color: rgba(255, 255, 255, 0.85); /* 讓內容區塊稍微透明好閱讀 */
-        border-radius: 10px;
+        border-radius: 12px;
+        max-width: 700px;
+        text-align: center;
     }
     h1 {
         font-size: 48px;
@@ -55,7 +54,6 @@ style = """
 </style>
 """
 
-# 首頁
 @app.route('/')
 def index():
     return render_template_string(f"""
@@ -75,7 +73,6 @@ def index():
     </html>
     """)
 
-# 故事頁（圖片按鈕後顯示）
 @app.route('/story')
 def story():
     return render_template_string(f"""
@@ -104,7 +101,6 @@ def story():
     </html>
     """)
 
-# 捐款頁
 @app.route('/donate')
 def donate():
     return render_template_string(f"""
@@ -125,5 +121,6 @@ def donate():
     </html>
     """)
 
-# 生產環境：交由 gunicorn 執行
-app_instance = app
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)

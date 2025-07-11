@@ -126,6 +126,16 @@ def donate():
 def google_verification():
     return 'google-site-verification: google255dd87781a8ec94.html'
 
+@app.route('/sitemap.xml')
+def sitemap():
+    return """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://chang-yan-wu.onrender.com/</loc></url>
+  <url><loc>https://chang-yan-wu.onrender.com/story</loc></url>
+  <url><loc>https://chang-yan-wu.onrender.com/donate</loc></url>
+</urlset>
+""", 200, {'Content-Type': 'application/xml'}
+
 # 啟動伺服器
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))

@@ -112,7 +112,7 @@ def donate():
         <div class="container">
             <h1>捐款資訊</h1>
             <p>銀行名稱：合作金庫銀行</p>
-            <p>帳號：1117872123227</p>
+            <p>帳號：1111111111111</p>
             <p>戶名：吳昌彥</p>
             <a href="/"><button>回首頁</button></a>
         </div>
